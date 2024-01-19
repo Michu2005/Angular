@@ -1,0 +1,39 @@
+<h1 style="text-align: center;">{{title}}</h1>
+<form>
+  <input type="text" name="name" [(ngModel)]="name"><br><br>
+
+  <input type="text" name="lastName" [(ngModel)]="lastName"><br><br>
+
+  <input type="text" name="charge" [(ngModel)]="charge"><br><br>
+
+  <input type="submit" value="Registrar" (click)="registerUser()">
+
+
+</form>
+
+<br>
+
+<p *ngIf="registered; else sinRegistrar">{{message}}, el nombre de la persona registrada es: {{name}} {{lastName}}
+  y su cargo es <span [ngClass]="{forDirectors: charge=='Director'}">{{charge}}</span></p>
+
+
+<ng-template #sinRegistrar>
+  <p>No se enecuentra nadie registrado</p>
+</ng-template>
+
+<br>
+<br>
+<br>
+
+<ul>
+  <li *ngFor="let entrada of entradas; let i=index">
+    <span style="font-size: medium; font-weight: bold;">
+      En JSON:
+      {{entrada | json}}
+      <br>
+      En normal:
+      {{entrada.titulo}}
+    </span>
+    . Entrada {{i+1}}
+  </li>
+</ul>
